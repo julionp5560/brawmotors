@@ -1,0 +1,108 @@
+======================================================
+ BRAW MOTORS - Instalación en la computadora del cliente
+======================================================
+
+Esto lo haces UNA sola vez, en la compu del cliente. Después de esto,
+el cliente solo da doble clic a un icono y ya está.
+
+Lo que vas a dejar armado:
+  - Apache y MySQL corriendo solos en automático (no hay que abrir
+    el panel de control de XAMPP nunca).
+  - Un icono en el escritorio que abre la app directo en el navegador.
+
+
+PASO 1 — Instalar XAMPP
+------------------------
+1. Descarga XAMPP (con PHP 8.2, igual que en tu compu) desde:
+   https://www.apachefriends.org/es/download.html
+2. Instálalo con las opciones por default. Déjalo en la ruta normal:
+   C:\xampp
+3. Cuando termine, abre "XAMPP Control Panel".
+
+
+PASO 2 — Copiar el proyecto
+----------------------------
+1. Copia toda la carpeta "rawmotos" (la que tiene dashboard.php,
+   config, pages, php, etc.) dentro de:
+   C:\xampp\htdocs\
+   Debe quedar como: C:\xampp\htdocs\rawmotos\
+2. NO copies la carpeta "instalador-cliente" dentro de htdocs si no
+   quieres que sea visible desde el navegador (no es obligatorio
+   quitarla, pero es más limpio dejarla aparte, ya cumplió su función
+   una vez que termines este instructivo).
+
+
+PASO 3 — Crear la base de datos
+---------------------------------
+1. En XAMPP Control Panel, dale "Start" a Apache y a MySQL (por ahora,
+   solo para esta primera vez).
+2. Abre en el navegador: http://localhost/phpmyadmin
+3. Click en "Nueva" (columna izquierda) y crea una base de datos
+   llamada exactamente:  raw_motos
+   (cotejamiento utf8mb4_general_ci o el que uses tú, no importa mucho)
+4. Con "raw_motos" seleccionada, ve a la pestaña "Importar" y sube el
+   archivo .sql que te llevas de tu base de datos actual.
+
+   ¿Cómo saco ese .sql de MI base de datos?
+   - En TU compu (donde tienes todo funcionando), abre
+     http://localhost/phpmyadmin
+   - Selecciona la base "raw_motos" en la izquierda.
+   - Pestaña "Exportar" → método "Rápido" → formato SQL → botón
+     "Continuar". Se descarga un archivo raw_motos.sql.
+   - Ese es el archivo que subes en el paso anterior, en la compu
+     del cliente.
+
+5. Revisa que en C:\xampp\htdocs\rawmotos\config\db.php el nombre de
+   base de datos diga "raw_motos" (ya viene así, no debería requerir
+   cambios si copiaste el proyecto tal cual).
+
+
+PASO 4 — Dejar Apache y MySQL prendidos solos (SIN abrir XAMPP nunca)
+-----------------------------------------------------------------------
+1. En "XAMPP Control Panel", busca la columna "Service" (o "Svc"),
+   junto a las filas de Apache y de MySQL.
+2. Marca la casilla de esa columna en AMBAS filas (Apache y MySQL).
+   Te va a pedir permiso de administrador un par de veces, acéptalo.
+3. Con eso, Windows arranca Apache y MySQL automáticamente cada vez
+   que se prende la computadora, ANTES de que alguien inicie sesión.
+   Ya no hace falta abrir el panel de XAMPP nunca más.
+4. Puedes cerrar el XAMPP Control Panel. Los servicios siguen corriendo.
+
+
+PASO 5 — Crear el icono de acceso directo
+-------------------------------------------
+1. De esta misma carpeta ("instalador-cliente"), copia el archivo:
+       BRAW MOTORS.url
+   ...directo al Escritorio del cliente (o donde tú quieras, por
+   ejemplo también sirve anclarlo a la barra de tareas).
+2. Ese ícono abre automáticamente el navegador en la página de login
+   de BRAW MOTORS (http://localhost/rawmotos/).
+3. (Opcional, red de seguridad) También copia el archivo
+       Iniciar BRAW MOTORS.bat
+   al escritorio. Este además intenta prender Apache/MySQL por si
+   algún día no arrancaron solos, y luego abre el navegador. No hace
+   daño usarlo, así que si el cliente prefiere solo tener un icono
+   para "no pensar", dale este en vez del .url.
+
+
+LISTO
+------
+De aquí en adelante, la experiencia del cliente es:
+  1. Prende la computadora.
+  2. Doble clic en el icono del escritorio.
+  3. Le sale la pantalla de login de BRAW MOTORS.
+
+No necesita saber qué es XAMPP, ni abrir nada más.
+
+
+NOTAS IMPORTANTES
+-------------------
+- Esto SOLO funciona desde esa misma computadora (localhost). Si el
+  cliente quiere usarlo también desde un celular o tablet en el mismo
+  local, dile a Pana (o pídeme a mí) que te configure acceso por red
+  local — es un paso extra, pero es posible sin necesitar internet.
+- Si algún día cambian de computadora, hay que repetir estos 5 pasos
+  en la compu nueva (o mejor: pedir que se monte en hosting, para no
+  depender de una sola máquina física).
+- Haz respaldos periódicos de la base de datos (Exportar en
+  phpMyAdmin) por si la computadora falla.

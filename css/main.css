@@ -1,0 +1,284 @@
+:root {
+    /* Negro suave de marca (no negro puro) */
+    --bg: #15161a;
+    --panel: #1b1c22;
+    --panel2: #21222a;
+    --text: #f5f5f7;
+    --muted: #b6b6c6;
+
+    --primary: #a52727;
+    /* rojo logo */
+    --primary2: #d55e4f;
+    /* acento */
+    --border: rgba(255, 255, 255, .10);
+    --shadow: 0 12px 30px rgba(0, 0, 0, .45);
+
+    /* Estados (positivo / pendiente / info) — mismos valores que movil.css */
+    --ok: #3cb478;
+    --warn: #ffbe46;
+    --info: #3c8cff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: radial-gradient(1200px 600px at 20% 10%, rgba(165, 39, 39, .25), transparent 60%),
+        radial-gradient(1000px 600px at 80% 30%, rgba(213, 94, 79, .18), transparent 60%),
+        var(--bg);
+    color: var(--text);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.btn {
+    border: 1px solid transparent;
+    background: linear-gradient(180deg, rgba(165, 39, 39, 1), rgba(135, 25, 25, 1));
+    color: white;
+    padding: 10px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform .08s ease, filter .15s ease;
+}
+
+.btn:hover {
+    filter: brightness(1.05);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn--ghost {
+    background: transparent;
+    border: 1px solid var(--border);
+}
+
+.alert {
+    background: rgba(165, 39, 39, .18);
+    border: 1px solid rgba(165, 39, 39, .45);
+    color: var(--text);
+    padding: 10px 12px;
+    border-radius: 12px;
+    margin: 12px 0;
+}
+
+::selection {
+    background: rgba(213, 94, 79, .35);
+}
+
+a,
+button,
+input {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn {
+    box-shadow: 0 10px 22px rgba(0, 0, 0, .35);
+}
+
+/* Fix selects en tema oscuro */
+.select,
+select {
+    background: rgba(255, 255, 255, .06);
+    color: #f2f2f2;
+    border: 1px solid rgba(255, 255, 255, .10);
+}
+
+.select:focus,
+select:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, .22);
+}
+
+/* Opciones (dropdown) */
+select option {
+    background: #0f0f12;
+    /* oscuro */
+    color: #f2f2f2;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.modal__box {
+    position: relative;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 10;
+    min-width: 300px;
+}
+
+/* ================= MODAL GLOBAL ================= */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.modal__box {
+    position: relative;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 10;
+    min-width: 300px;
+}
+
+/* ================= BOTONES ================= */
+
+.btn-small {
+    width: auto;
+    padding: 8px 16px;
+    display: inline-block;
+}
+
+/* =========================================================
+   MODO ALTO CONTRASTE
+   Paleta clara pensada para leerse bajo luz solar directa en
+   tablets del taller/autolavado: fondo casi blanco, texto casi
+   negro, bordes fuertes en vez de los "glass" translúcidos del
+   tema oscuro (que en blanco quedarían invisibles).
+   ========================================================= */
+:root[data-tema="alto_contraste"] {
+    --bg: #f2f3f6;
+    --panel: #ffffff;
+    --panel2: #ffffff;
+    --text: #101114;
+    --muted: #4a4c56;
+
+    --primary: #a52727;
+    --primary2: #c0432f;
+    --border: rgba(15, 17, 25, .35);
+    --shadow: 0 10px 22px rgba(15, 17, 25, .12);
+
+    --ok: #1f7a4d;
+    --warn: #8a5800;
+    --info: #1d5fd6;
+}
+
+[data-tema="alto_contraste"] body {
+    background: var(--bg);
+}
+
+[data-tema="alto_contraste"] .btn {
+    box-shadow: 0 8px 16px rgba(165, 39, 39, .25);
+}
+
+[data-tema="alto_contraste"] .btn--ghost {
+    background: #ffffff;
+    border-color: var(--border);
+    color: var(--text);
+}
+
+[data-tema="alto_contraste"] .alert {
+    background: rgba(165, 39, 39, .08);
+    border-color: rgba(165, 39, 39, .35);
+}
+
+[data-tema="alto_contraste"] .select,
+[data-tema="alto_contraste"] select {
+    background: #ffffff;
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+[data-tema="alto_contraste"] .select:focus,
+[data-tema="alto_contraste"] select:focus {
+    border-color: var(--primary2);
+}
+
+[data-tema="alto_contraste"] select option {
+    background: #ffffff;
+    color: var(--text);
+}
+
+[data-tema="alto_contraste"] .modal__overlay {
+    background: rgba(15, 17, 25, .45);
+}
+
+[data-tema="alto_contraste"] .modal__box {
+    background: #ffffff;
+    color: var(--text);
+}
+
+/* Switch de tema (header escritorio + topbar móvil) */
+.tema-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, .05);
+    border-radius: 999px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--muted);
+    user-select: none;
+}
+
+.tema-switch:hover {
+    border-color: rgba(213, 94, 79, .45);
+}
+
+.tema-switch__icon {
+    font-size: 14px;
+    line-height: 1;
+}
+
+[data-tema="alto_contraste"] .tema-switch {
+    background: #ffffff;
+    border-color: var(--border);
+    color: var(--text);
+}
